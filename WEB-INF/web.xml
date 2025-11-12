@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>Login Application with Exception Handling</display-name>
+    
+    <!-- ErrorHandler Servlet Configuration -->
+    <servlet>
+        <servlet-name>ErrorHandlerServlet</servlet-name>
+        <servlet-class>com.error.ErrorHandlerServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ErrorHandlerServlet</servlet-name>
+        <url-pattern>/errorHandler</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Exception Handling Configuration -->
+    <!-- Handle specific exception types -->
+    <error-page>
+        <exception-type>java.lang.NullPointerException</exception-type>
+        <location>/errorHandler</location>
+    </error-page>
+    
+    <error-page>
+        <exception-type>java.sql.SQLException</exception-type>
+        <location>/errorHandler</location>
+    </error-page>
+    
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/errorHandler</location>
+    </error-page>
+    
+    <!-- Handle HTTP error codes -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorHandler</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errorHandler</location>
+    </error-page>
+    
+    <error-page>
+        <error-code>403</error-code>
+        <location>/errorHandler</location>
+    </error-page>
+    
+    <!-- Welcome File List -->
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+    </welcome-file-list>
+    
+</web-app>
